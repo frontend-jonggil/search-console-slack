@@ -11,14 +11,62 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("Asia/Seoul");
 
-const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-const privateKey = process.env.GOOGLE_PRIVATE_KEY;
-const siteUrl = "https://unpa.moneple.com";
-const searchConsoleUrl =
-  "https://search.google.com/u/2/search-console/index?resource_id=https%3A%2F%2Funpa.moneple.com%2F&hl=ko";
-const projectName = "언니의 파우치";
+export const schema = [
+  {
+    serviecName: "모네플1",
+    clientEmail: process.env.GOOGLE_CLIENT_EMAIL!,
+    privateKey: process.env.GOOGLE_PRIVATE_KEY!,
+    projects: [
+      {
+        siteUrl: "https://unpa.moneple.com",
+        searchConsoleUrl:
+          "https://search.google.com/u/2/search-console/index?resource_id=https%3A%2F%2Funpa.moneple.com%2F&hl=ko",
+        projectName: "언니의 파우치 커뮤니티",
+      },
+      {
+        siteUrl: "https://cashdoc.moneple.com",
+        searchConsoleUrl:
+          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fcashdoc.moneple.com%2F",
+        projectName: "캐시닥 커뮤니티",
+      },
+    ],
+  },
+  {
+    serviecName: "모네플2",
+    clientEmail: process.env.GOOGLE_CLIENT_EMAIL!,
+    privateKey: process.env.GOOGLE_PRIVATE_KEY!,
+    projects: [
+      {
+        siteUrl: "https://geniet.moneple.com",
+        searchConsoleUrl:
+          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fgeniet.moneple.com%2F",
+        projectName: "지니어트 커뮤니티",
+      },
+      {
+        siteUrl: "https://cashwalklabs.moneple.com",
+        searchConsoleUrl:
+          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fcashwalklabs.moneple.com%2F",
+        projectName: "글로벌 캐시워크 커뮤니티",
+      },
+    ],
+  },
+];
 
-async function fetchSearchData(startDate: dayjs.Dayjs, endDate: dayjs.Dayjs) {
+interface FetchSearchData {
+  clientEmail: string;
+  privateKey: string;
+  siteUrl: string;
+  startDate: dayjs.Dayjs;
+  endDate: dayjs.Dayjs;
+}
+
+async function fetchSearchData({
+  clientEmail,
+  privateKey,
+  siteUrl,
+  startDate,
+  endDate,
+}: FetchSearchData) {
   const auth = new JWT({
     email: clientEmail,
     key: privateKey,
@@ -40,7 +88,23 @@ async function fetchSearchData(startDate: dayjs.Dayjs, endDate: dayjs.Dayjs) {
   return searchAnalytics.data.rows || [];
 }
 
-export async function testSearchConsole() {
+interface TestSearchConsole {
+  clientEmail: string;
+  privateKey: string;
+  siteUrl: string;
+  searchConsoleUrl: string;
+  projectName: string;
+  serviceName: string;
+}
+
+export async function testSearchConsole({
+  clientEmail,
+  privateKey,
+  siteUrl,
+  searchConsoleUrl,
+  projectName,
+  serviceName,
+}: TestSearchConsole) {
   // 이번 주 데이터 (3일 전부터 9일 전까지)
   const currentEndDate = dayjs().tz().subtract(3, "day");
   const currentStartDate = currentEndDate.subtract(6, "day");
@@ -50,8 +114,20 @@ export async function testSearchConsole() {
   const previousStartDate = previousEndDate.subtract(6, "day");
 
   const [currentWeekData, previousWeekData] = await Promise.all([
-    fetchSearchData(currentStartDate, currentEndDate),
-    fetchSearchData(previousStartDate, previousEndDate),
+    fetchSearchData({
+      clientEmail,
+      privateKey,
+      siteUrl,
+      startDate: currentStartDate,
+      endDate: currentEndDate,
+    }),
+    fetchSearchData({
+      clientEmail,
+      privateKey,
+      siteUrl,
+      startDate: previousStartDate,
+      endDate: previousEndDate,
+    }),
   ]);
 
   // 주간 합계 계산
@@ -63,21 +139,19 @@ export async function testSearchConsole() {
     position: 0,
   };
 
-  for (const row of currentWeekData) {
+  currentWeekData.forEach((row) => {
     currentWeekSummary.clicks += row.clicks || 0;
     currentWeekSummary.impressions += row.impressions || 0;
     currentWeekSummary.ctr += row.ctr || 0;
     currentWeekSummary.position += row.position || 0;
-  }
+  });
 
-  for (const row of previousWeekData) {
+  previousWeekData.forEach((row) => {
     previousWeekSummary.clicks += row.clicks || 0;
     previousWeekSummary.impressions += row.impressions || 0;
     previousWeekSummary.ctr += row.ctr || 0;
     previousWeekSummary.position += row.position || 0;
-  }
-
-
+  });
 
   // 평균값 계산
   currentWeekSummary.ctr = currentWeekSummary.ctr / currentWeekData.length;
@@ -121,7 +195,8 @@ export async function testSearchConsole() {
     changes,
     searchConsoleUrl,
     projectName,
+    serviceName,
   };
 }
 
-testSearchConsole();
+// testSearchConsole();
