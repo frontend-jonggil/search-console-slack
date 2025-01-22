@@ -13,10 +13,16 @@ dayjs.tz.setDefault("Asia/Seoul");
 
 export const schema = [
   {
-    serviecName: "모네플1",
+    serviecName: "모네플",
     clientEmail: process.env.GOOGLE_CLIENT_EMAIL!,
     privateKey: process.env.GOOGLE_PRIVATE_KEY!,
     projects: [
+      {
+        siteUrl: "https://cashdoc.moneple.com",
+        searchConsoleUrl:
+          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fcashdoc.moneple.com%2F",
+        projectName: "캐시닥 커뮤니티",
+      },
       {
         siteUrl: "https://unpa.moneple.com",
         searchConsoleUrl:
@@ -24,18 +30,17 @@ export const schema = [
         projectName: "언니의 파우치 커뮤니티",
       },
       {
-        siteUrl: "https://cashdoc.moneple.com",
+        siteUrl: "https://mindkey.moneple.com",
         searchConsoleUrl:
-          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fcashdoc.moneple.com%2F",
-        projectName: "캐시닥 커뮤니티",
+          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fmindkey.moneple.com%2F",
+        projectName: "마인드키 커뮤니티",
       },
-    ],
-  },
-  {
-    serviecName: "모네플2",
-    clientEmail: process.env.GOOGLE_CLIENT_EMAIL!,
-    privateKey: process.env.GOOGLE_PRIVATE_KEY!,
-    projects: [
+      {
+        siteUrl: "https://gwaminboss.moneple.com",
+        searchConsoleUrl:
+          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fgwaminboss.moneple.com%2F",
+        projectName: "과민보스 커뮤니티",
+      },
       {
         siteUrl: "https://geniet.moneple.com",
         searchConsoleUrl:
