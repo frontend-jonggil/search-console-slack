@@ -24,16 +24,16 @@ export const schema = [
         projectName: "캐시닥 커뮤니티",
       },
       {
-        siteUrl: "https://unpa.moneple.com",
+        siteUrl: "https://unnie.moneple.com",
         searchConsoleUrl:
-          "https://search.google.com/u/2/search-console/index?resource_id=https%3A%2F%2Funpa.moneple.com%2F&hl=ko",
+          "https://search.google.com/u/2/search-console/index?resource_id=https%3A%2F%2Funnie.moneple.com%2F",
         projectName: "언니의 파우치 커뮤니티",
       },
       {
-        siteUrl: "https://mindkey.moneple.com",
+        siteUrl: "https://trost.moneple.com",
         searchConsoleUrl:
-          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fmindkey.moneple.com%2F",
-        projectName: "마인드키 커뮤니티",
+          "https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Ftrost.moneple.com%2F",
+        projectName: "트로스트 커뮤니티",
       },
       {
         siteUrl: "https://gwaminboss.moneple.com",
@@ -53,8 +53,50 @@ export const schema = [
           "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fcashwalklabs.moneple.com%2F",
         projectName: "글로벌 캐시워크 커뮤니티",
       },
+      {
+        siteUrl: "https://cashwalk.moneple.com",
+        searchConsoleUrl:
+          "https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fcashwalk.moneple.com%2F",
+        projectName: "캐시워크 커뮤니티",
+      },
+      {
+        siteUrl: "https://cashwalk.moneple.com",
+        searchConsoleUrl:
+          "https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fcashwalk.moneple.com%2F",
+        projectName: "캐시워크 커뮤니티",
+      },
+      {
+        siteUrl: "https://winspec.moneple.com",
+        searchConsoleUrl:"https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fwinspec.moneple.com%2F",
+        projectName: "윈스펙 커뮤니티",
+      }
     ],
   },
+  // {
+  //   serviecName: "링커리어",
+  //   clientEmail: process.env.GOOGLE_CLIENT_EMAIL!,
+  //   privateKey: process.env.GOOGLE_PRIVATE_KEY!,
+  //   projects: [
+  //     {
+  //       siteUrl: "https://linkareer.com/",
+  //       searchConsoleUrl:
+  //         "https://search.google.com/search-console?resource_id=https%3A%2F%2Flinkareer.com%2F",
+  //       projectName: "링커리어",
+  //     },
+  //     {
+  //       siteUrl: "https://community.linkareer.com/",
+  //       searchConsoleUrl:
+  //         "https://search.google.com/search-console?resource_id=https%3A%2F%2Fcommunity.linkareer.com%2F",
+  //       projectName: "링커리어 - 커뮤니티",
+  //     },
+  //     {
+  //       siteUrl: "https://cbt-community.linkareer.com/",
+  //       searchConsoleUrl:
+  //         "https://search.google.com/search-console?resource_id=sc-domain%3Acbt-community.linkareer.com",
+  //       projectName: "링커리어 - 시험 정보방",
+  //     },
+  //   ],
+  // },
 ];
 
 interface FetchSearchData {
