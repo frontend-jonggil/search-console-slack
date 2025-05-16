@@ -61,9 +61,10 @@ export const schema = [
       },
       {
         siteUrl: "https://winspec.moneple.com",
-        searchConsoleUrl:"https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fwinspec.moneple.com%2F",
+        searchConsoleUrl:
+          "https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fwinspec.moneple.com%2F",
         projectName: "윈스펙 커뮤니티",
-      }
+      },
     ],
   },
   // {

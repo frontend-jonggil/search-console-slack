@@ -11,7 +11,8 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("Asia/Seoul");
 
-const SEO_ISSUE_CHANNEL_ID = 'C087VLTHCD8'
+const SEO_ISSUE_CHANNEL_ID = "C087VLTHCD8";
+const SERVICE_OPERATION_CHANNEL_ID = "C07GN0THGPQ";
 
 // const webhook = new IncomingWebhook(process.env.SLACK_WEBHOOK_URL!);
 const web = new WebClient(process.env.SLACK_USER_OAUTH_TOKEN!);
@@ -20,10 +21,14 @@ async function sendWebhook() {
   try {
     // schema에서 각 서비스별로 처리
     for (const service of schema) {
-
       // 서비스 이름으로 메인 메시지 생성
-      const result = await web.chat.postMessage({
+      const seoResult = await web.chat.postMessage({
         channel: SEO_ISSUE_CHANNEL_ID,
+        text: `주간 지표 - ${service.serviecName}`,
+      });
+
+      const serviceResult = await web.chat.postMessage({
+        channel: SERVICE_OPERATION_CHANNEL_ID,
         text: `주간 지표 - ${service.serviecName}`,
       });
 
@@ -38,10 +43,8 @@ async function sendWebhook() {
           serviceName: service.serviecName,
         });
 
-        // 각 프로젝트의 데이터를 스레드 답글로 전송
-        await web.chat.postMessage({
-          channel: SEO_ISSUE_CHANNEL_ID,
-          thread_ts: result.ts,
+        // 프로젝트 데이터 메시지 생성
+        const replyMessage = {
           text: "프로젝트 지표",
           blocks: [
             {
@@ -146,6 +149,20 @@ async function sendWebhook() {
               ],
             },
           ],
+        };
+
+        // SEO 채널의 스레드에 답글 전송
+        await web.chat.postMessage({
+          channel: SEO_ISSUE_CHANNEL_ID,
+          thread_ts: seoResult.ts,
+          ...replyMessage,
+        });
+
+        // 운영 채널의 스레드에 답글 전송
+        await web.chat.postMessage({
+          channel: SERVICE_OPERATION_CHANNEL_ID,
+          thread_ts: serviceResult.ts,
+          ...replyMessage,
         });
       }
     }
