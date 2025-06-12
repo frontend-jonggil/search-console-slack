@@ -38,7 +38,7 @@ export const schema = [
       {
         siteUrl: "https://gmboss.moneple.com",
         searchConsoleUrl:
-          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fgwaminboss.moneple.com%2F",
+          "https://search.google.com/u/0/search-console?resource_id=https%3A%2F%2Fgmboss.moneple.com%2F",
         projectName: "과민보스 커뮤니티",
       },
       {
