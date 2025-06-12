@@ -124,6 +124,7 @@ async function fetchSearchData({
       endDate: endDate.format("YYYY-MM-DD"),
       dimensions: ["date"],
       type: "web",
+      dataState: "all",
     },
   });
 
