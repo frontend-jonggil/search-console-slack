@@ -11,7 +11,6 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("Asia/Seoul");
 
-const SEO_ISSUE_CHANNEL_ID = "C087VLTHCD8";
 const SERVICE_OPERATION_CHANNEL_ID = "C07GN0THGPQ";
 
 // const webhook = new IncomingWebhook(process.env.SLACK_WEBHOOK_URL!);
@@ -22,11 +21,6 @@ async function sendWebhook() {
     // schema에서 각 서비스별로 처리
     for (const service of schema) {
       // 서비스 이름으로 메인 메시지 생성
-      const seoResult = await web.chat.postMessage({
-        channel: SEO_ISSUE_CHANNEL_ID,
-        text: `주간 지표 - ${service.serviecName}`,
-      });
-
       const serviceResult = await web.chat.postMessage({
         channel: SERVICE_OPERATION_CHANNEL_ID,
         text: `주간 지표 - ${service.serviecName}`,
@@ -150,13 +144,6 @@ async function sendWebhook() {
             },
           ],
         };
-
-        // SEO 채널의 스레드에 답글 전송
-        await web.chat.postMessage({
-          channel: SEO_ISSUE_CHANNEL_ID,
-          thread_ts: seoResult.ts,
-          ...replyMessage,
-        });
 
         // 운영 채널의 스레드에 답글 전송
         await web.chat.postMessage({
