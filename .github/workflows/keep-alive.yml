@@ -1,0 +1,31 @@
+name: Keep Alive
+
+on:
+  schedule:
+    - cron: '0 0 1 * *' # 매월 1일 UTC 00:00
+  workflow_dispatch: # 수동 실행 허용
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Keep repository active
+        run: |
+          echo "$(date): Keep alive commit to prevent workflow deactivation" >> .github/keep-alive.log
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Keep-Alive"
+          git add .github/keep-alive.log
+          git commit -m "Keep alive: $(date)" || echo "No changes to commit"
+          git push || echo "Nothing to push"
+      
+      - name: Enable scheduled workflows
+        run: |
+          echo "Repository kept active on $(date)"

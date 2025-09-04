@@ -12,86 +12,86 @@ dayjs.extend(timezone);
 dayjs.tz.setDefault("Asia/Seoul");
 
 export const schema = [
-  {
-    serviecName: "모네플",
-    clientEmail: process.env.GOOGLE_CLIENT_EMAIL!,
-    privateKey: process.env.GOOGLE_PRIVATE_KEY!,
-    projects: [
-      {
-        siteUrl: "https://cashdoc.moneple.com",
-        searchConsoleUrl:
-          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fcashdoc.moneple.com%2F",
-        projectName: "캐시닥 커뮤니티",
-      },
-      {
-        siteUrl: "https://unnie.moneple.com",
-        searchConsoleUrl:
-          "https://search.google.com/u/2/search-console/index?resource_id=https%3A%2F%2Funnie.moneple.com%2F",
-        projectName: "언니의 파우치 커뮤니티",
-      },
-      {
-        siteUrl: "https://trost.moneple.com",
-        searchConsoleUrl:
-          "https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fgmboss.moneple.com%2F",
-        projectName: "트로스트 커뮤니티",
-      },
-      {
-        siteUrl: "https://gmboss.moneple.com",
-        searchConsoleUrl:
-          "https://search.google.com/u/0/search-console?resource_id=https%3A%2F%2Fgmboss.moneple.com%2F",
-        projectName: "과민보스 커뮤니티",
-      },
-      {
-        siteUrl: "https://geniet.moneple.com",
-        searchConsoleUrl:
-          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fgeniet.moneple.com%2F",
-        projectName: "지니어트 커뮤니티",
-      },
-      {
-        siteUrl: "https://cashwalklabs.moneple.com",
-        searchConsoleUrl:
-          "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fcashwalklabs.moneple.com%2F",
-        projectName: "글로벌 캐시워크 커뮤니티",
-      },
-      {
-        siteUrl: "https://cashwalk.moneple.com",
-        searchConsoleUrl:
-          "https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fcashwalk.moneple.com%2F",
-        projectName: "캐시워크 커뮤니티",
-      },
-      {
-        siteUrl: "https://winspec.moneple.com",
-        searchConsoleUrl:
-          "https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fwinspec.moneple.com%2F",
-        projectName: "윈스펙 커뮤니티",
-      },
-    ],
-  },
   // {
-  //   serviecName: "링커리어",
+  //   serviecName: "모네플",
   //   clientEmail: process.env.GOOGLE_CLIENT_EMAIL!,
   //   privateKey: process.env.GOOGLE_PRIVATE_KEY!,
   //   projects: [
   //     {
-  //       siteUrl: "https://linkareer.com/",
+  //       siteUrl: "https://cashdoc.moneple.com",
   //       searchConsoleUrl:
-  //         "https://search.google.com/search-console?resource_id=https%3A%2F%2Flinkareer.com%2F",
-  //       projectName: "링커리어",
+  //         "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fcashdoc.moneple.com%2F",
+  //       projectName: "캐시닥 커뮤니티",
   //     },
   //     {
-  //       siteUrl: "https://community.linkareer.com/",
+  //       siteUrl: "https://unnie.moneple.com",
   //       searchConsoleUrl:
-  //         "https://search.google.com/search-console?resource_id=https%3A%2F%2Fcommunity.linkareer.com%2F",
-  //       projectName: "링커리어 - 커뮤니티",
+  //         "https://search.google.com/u/2/search-console/index?resource_id=https%3A%2F%2Funnie.moneple.com%2F",
+  //       projectName: "언니의 파우치 커뮤니티",
   //     },
   //     {
-  //       siteUrl: "https://cbt-community.linkareer.com/",
+  //       siteUrl: "https://trost.moneple.com",
   //       searchConsoleUrl:
-  //         "https://search.google.com/search-console?resource_id=sc-domain%3Acbt-community.linkareer.com",
-  //       projectName: "링커리어 - 시험 정보방",
+  //         "https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fgmboss.moneple.com%2F",
+  //       projectName: "트로스트 커뮤니티",
+  //     },
+  //     {
+  //       siteUrl: "https://gmboss.moneple.com",
+  //       searchConsoleUrl:
+  //         "https://search.google.com/u/0/search-console?resource_id=https%3A%2F%2Fgmboss.moneple.com%2F",
+  //       projectName: "과민보스 커뮤니티",
+  //     },
+  //     {
+  //       siteUrl: "https://geniet.moneple.com",
+  //       searchConsoleUrl:
+  //         "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fgeniet.moneple.com%2F",
+  //       projectName: "지니어트 커뮤니티",
+  //     },
+  //     {
+  //       siteUrl: "https://cashwalklabs.moneple.com",
+  //       searchConsoleUrl:
+  //         "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Fcashwalklabs.moneple.com%2F",
+  //       projectName: "글로벌 캐시워크 커뮤니티",
+  //     },
+  //     {
+  //       siteUrl: "https://cashwalk.moneple.com",
+  //       searchConsoleUrl:
+  //         "https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fcashwalk.moneple.com%2F",
+  //       projectName: "캐시워크 커뮤니티",
+  //     },
+  //     {
+  //       siteUrl: "https://winspec.moneple.com",
+  //       searchConsoleUrl:
+  //         "https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fwinspec.moneple.com%2F",
+  //       projectName: "윈스펙 커뮤니티",
   //     },
   //   ],
   // },
+  {
+    serviecName: "링커리어",
+    clientEmail: process.env.GOOGLE_CLIENT_EMAIL!,
+    privateKey: process.env.GOOGLE_PRIVATE_KEY!,
+    projects: [
+      {
+        siteUrl: "https://linkareer.com/",
+        searchConsoleUrl:
+          "https://search.google.com/search-console?resource_id=https%3A%2F%2Flinkareer.com%2F",
+        projectName: "링커리어",
+      },
+      {
+        siteUrl: "https://community.linkareer.com/",
+        searchConsoleUrl:
+          "https://search.google.com/search-console?resource_id=https%3A%2F%2Fcommunity.linkareer.com%2F",
+        projectName: "링커리어 - 커뮤니티",
+      },
+      {
+        siteUrl: "sc-domain:cbt-community.linkareer.com",
+        searchConsoleUrl:
+          "https://search.google.com/search-console?resource_id=sc-domain%3Acbt-community.linkareer.com",
+        projectName: "링커리어 - 시험 정보방",
+      },
+    ],
+  },
 ];
 
 interface FetchSearchData {
@@ -148,11 +148,11 @@ export async function testSearchConsole({
   projectName,
   serviceName,
 }: TestSearchConsole) {
-  // 이번 주 데이터 (3일 전부터 9일 전까지)
-  const currentEndDate = dayjs().tz().subtract(3, "day");
+  // 이번 주 데이터 (1일 전부터 7일 전까지)
+  const currentEndDate = dayjs().tz().subtract(1, "day");
   const currentStartDate = currentEndDate.subtract(6, "day");
 
-  // 지난 주 데이터 (10일 전부터 16일 전까지)
+  // 지난 주 데이터 (8일 전부터 14일 전까지)
   const previousEndDate = currentStartDate.subtract(1, "day");
   const previousStartDate = previousEndDate.subtract(6, "day");
 

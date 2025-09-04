@@ -11,7 +11,7 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("Asia/Seoul");
 
-const SERVICE_OPERATION_CHANNEL_ID = "C07GN0THGPQ";
+const SERVICE_OPERATION_CHANNEL_ID = "CJNS12WMP";
 
 // const webhook = new IncomingWebhook(process.env.SLACK_WEBHOOK_URL!);
 const web = new WebClient(process.env.SLACK_USER_OAUTH_TOKEN!);
@@ -74,11 +74,11 @@ async function sendWebhook() {
               fields: [
                 {
                   type: "mrkdwn",
-                  text: `*총 클릭수*\n이번 주: ${
-                    searchConsoleData.currentWeekSummary.clicks
-                  }회\n지난 주: ${
-                    searchConsoleData.previousWeekSummary.clicks
-                  }회\n변화량: ${searchConsoleData.changes.clicks}% ${
+                  text: `*총 클릭수*\n이번 주: ${searchConsoleData.currentWeekSummary.clicks.toLocaleString(
+                    "ko-KR"
+                  )}회\n지난 주: ${searchConsoleData.previousWeekSummary.clicks.toLocaleString(
+                    "ko-KR"
+                  )}회\n변화량: ${searchConsoleData.changes.clicks}% ${
                     Number(searchConsoleData.changes.clicks) > 0 ? "📈" : "📉"
                   }`,
                 },
@@ -89,11 +89,11 @@ async function sendWebhook() {
               fields: [
                 {
                   type: "mrkdwn",
-                  text: `*총 노출수*\n이번 주: ${
-                    searchConsoleData.currentWeekSummary.impressions
-                  }회\n지난 주: ${
-                    searchConsoleData.previousWeekSummary.impressions
-                  }회\n변화량: ${searchConsoleData.changes.impressions}% ${
+                  text: `*총 노출수*\n이번 주: ${searchConsoleData.currentWeekSummary.impressions.toLocaleString(
+                    "ko-KR"
+                  )}회\n지난 주: ${searchConsoleData.previousWeekSummary.impressions.toLocaleString(
+                    "ko-KR"
+                  )}회\n변화량: ${searchConsoleData.changes.impressions}% ${
                     Number(searchConsoleData.changes.impressions) > 0
                       ? "📈"
                       : "📉"
